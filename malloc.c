@@ -32,8 +32,8 @@ static char* alloc_tab_insert(size_t size)
 	{
 		start = buf;
 		end = buf + size;
-		sp_cpy(start, buf + buf_size - 2 * sizeof(char*), sizeof(char*));
-		sp_cpy(end, buf + buf_size - sizeof(char*), sizeof(char*));
+		sp_cpy(&start, buf + buf_size - 2 * sizeof(char*), sizeof(char*));
+		sp_cpy(&end, buf + buf_size - sizeof(char*), sizeof(char*));
 		res = start;
 		alloc_tab_len++;
 	}
@@ -43,8 +43,8 @@ static char* alloc_tab_insert(size_t size)
 
 		while (iter < buf + buf_size - 2 * sizeof(char*))
 		{
-			sp_cpy(iter + sizeof(char*), end, sizeof(char*));
-			sp_cpy(iter + 2 * sizeof(char*), start, sizeof(char*));
+			sp_cpy(iter + sizeof(char*), &end, sizeof(char*));
+			sp_cpy(iter + 2 * sizeof(char*), &start, sizeof(char*));
 			if (start - end >= size)
 			{
 				res = end + 1;
@@ -57,7 +57,7 @@ static char* alloc_tab_insert(size_t size)
 
 		if (res == NULL)
 		{
-			sp_cpy(buf + buf_size - sizeof(char*), end,
+			sp_cpy(buf + buf_size - sizeof(char*), &end,
 					sizeof(char*));
 			start = alloc_tab_begin() - 2 * sizeof(char*);
 

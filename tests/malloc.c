@@ -20,8 +20,17 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	printf("-- Allocating memory\n");
+	printf("-- Allocating memory: ");
 	char* mem = sp_malloc(10);
+	if (mem != NULL)
+	{
+		printf("ok\n");
+	}
+	else
+	{
+		printf("fail\n");
+		return -1;
+	}
 
 	printf("-- Checking space: %ld, ", sp_malloc_space());
 	if (sp_malloc_space() == 1024 - 4 * sizeof(char*) - 10)
