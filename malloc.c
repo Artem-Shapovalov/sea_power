@@ -1,4 +1,4 @@
-#include "locator.h"
+#include "malloc.h"
 
 static char* buf = NULL;
 static size_t buf_size = 0;
@@ -127,7 +127,7 @@ size_t sp_malloc_space()
 
 void* sp_malloc(size_t size)
 {
-	if (locator_space() < size)
+	if (sp_malloc_space() < size)
 	{
 		return NULL;
 	}
