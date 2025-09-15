@@ -92,14 +92,24 @@ int sp_vector_push_back(void* vector, void* buffer)
 			res = 1;
 		}
 
-		if (vector->data != NULL)
+		if (res == 1)
 		{
-			free(vector->data);
+			if (vector->data != NULL)
+			{
+				free(vector->data);
+			}
+			
+			if (new_data != NULL)
+			{
+				vector->data = new_data;
+			}
 		}
-		
-		if (new_data != NULL)
+		else
 		{
-			vector->data = new_data;
+			if (new_data != NULL)
+			{
+				free(new_data);
+			}
 		}
 	}
 
@@ -128,14 +138,24 @@ int sp_vector_pop_back(void* vector, void* buffer)
 			res = 1;
 		}
 
-		if (vector->data != NULL)
+		if (res == 1)
 		{
-			free(vector->data);
-		}
+			if (vector->data != NULL)
+			{
+				free(vector->data);
+			}
 
-		if (new_data != NULL)
+			if (new_data != NULL)
+			{
+				vector->data = new_data;
+			}
+		}
+		else
 		{
-			vector->data = new_data;
+			if (new_data != NULL)
+			{
+				free(new_data);
+			}
 		}
 	}
 	
@@ -168,14 +188,24 @@ int sp_vector_push_front(void* vector, void* buffer)
 			res = 1;
 		}
 
-		if (vector->data != NULL)
+		if (res == 1)
 		{
-			free(vector->data);
-		}
+			if (vector->data != NULL)
+			{
+				free(vector->data);
+			}
 
-		if (new_data != NULL)
+			if (new_data != NULL)
+			{
+				vector->data = new_data;
+			}
+		}
+		else
 		{
-			vector->data = new_data;
+			if (new_data != NULL)
+			{
+				free(new_data);
+			}
 		}
 	}
 
@@ -201,14 +231,24 @@ int sp_vector_pop_front(void* vector, void* buffer)
 			res = 1;
 		}
 
-		if (vector->data != NULL)
+		if (res == 1)
 		{
-			free(vector->data);
-		}
+			if (vector->data != NULL)
+			{
+				free(vector->data);
+			}
 
-		if (new_data != NULL)
+			if (new_data != NULL)
+			{
+				vector->data = new_data;
+			}
+		}
+		else
 		{
-			vector->data = new_data;
+			if (new_data == NULL)
+			{
+				free(new_data);
+			}
 		}
 	}
 
