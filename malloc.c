@@ -92,11 +92,11 @@ static size_t alloc_tab_remove(char* start)
 	for (iter = alloc_tab_begin(); iter < buf + buf_size;
 			iter += 2 * sizeof(char*))
 	{
-		sp_cpy(iter, _start, sizeof(char*));
+		sp_cpy(iter, &_start, sizeof(char*));
 		_end = _start;
 		if (start == _start)
 		{
-			sp_cpy(iter + sizeof(char*), _end, sizeof(char*));
+			sp_cpy(iter + sizeof(char*), &_end, sizeof(char*));
 			sp_cpy(alloc_tab_begin(),
 				alloc_tab_begin() + 2 * sizeof(char*),
 				iter - alloc_tab_begin());
